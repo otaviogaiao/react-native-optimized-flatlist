@@ -15,6 +15,7 @@ export default class OptimizedFlatList extends React.PureComponent {
     this.scrollToIndex = this.scrollToIndex.bind(this)
     this.scrollToItem = this.scrollToItem.bind(this)
     this.scrollToOffset = this.scrollToOffset.bind(this)
+    this._listRef = React.createRef()
   }
 
   _addRowRefs(ref, data){
@@ -61,7 +62,7 @@ export default class OptimizedFlatList extends React.PureComponent {
 
   scrollToEnd(params?: ?{animated?: ?boolean}) {
       if (this._listRef) {
-        this._listRef.scrollToEnd(params);
+        this._listRef.current.scrollToEnd(params);
       }
     }
 
@@ -73,7 +74,7 @@ scrollToIndex(params: {
     viewPosition?: number,
   }) {
     if (this._listRef) {
-      this._listRef.scrollToIndex(params);
+      this._listRef.current.scrollToIndex(params);
     }
   }
 
@@ -83,20 +84,20 @@ scrollToIndex(params: {
     viewPosition?: number,
   }) {
     if (this._listRef) {
-      this._listRef.scrollToItem(params);
+      this._listRef.current.scrollToItem(params);
     }
   }
 
   scrollToOffset(params: {animated?: ?boolean, offset: number}) {
     if (this._listRef) {
-      this._listRef.scrollToOffset(params);
+      this._listRef.current.scrollToOffset(params);
     }
   }
 
   render() {
     return (
       <FlatList
-        ref={ref => this._listRef = ref}
+        ref={this._listRef}
         {...this.props}
         renderItem={ data => this._renderItem(data) }
         onViewableItemsChanged={this._onViewableItemsChanged}
