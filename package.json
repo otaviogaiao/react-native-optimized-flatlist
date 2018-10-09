@@ -1,6 +1,6 @@
 {
   "name": "react-native-optimized-flatlist",
-  "version": "0.0.0-development",
+  "version": "1.0.6",
   "description": "Optimization for complex and slow React Native FlatLists",
   "main": "src/index.js",
   "scripts": {
