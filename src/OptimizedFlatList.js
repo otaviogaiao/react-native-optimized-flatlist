@@ -56,7 +56,7 @@ export default class OptimizedFlatList extends React.PureComponent {
     }
   ) {
     info.changed.map(item =>
-      this._updateItem(item.index, item.isViewable)
+      this._updateItem(item.index, item.index === 0 || item.isViewable)
     )
   }
 
