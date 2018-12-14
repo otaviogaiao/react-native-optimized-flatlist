@@ -82,3 +82,5 @@ Just replace SectionList with OptimizedSectionList, like this:
         data: ingressosExpirados,
         key: "passados"
       };
+      
+Read [https://github.com/filipemerker/flatlist-performance-tips/]() for performance improvement. Most of what its said in this article applies to SectionLists as well. In my case I had to change viewabilityConfig, updateCellsBatchingPeriod and windowSize.
