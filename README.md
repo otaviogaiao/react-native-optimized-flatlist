@@ -32,6 +32,7 @@ render() {
 ...
 ```
 With this:
+
 ```js
 ...
 import {OptimizedFlatList} from 'react-native-optimized-flatlist'
@@ -46,3 +47,38 @@ render() {
 ...
 
 ```
+
+### OptimizedSectionList (experimental)
+
+Just replace SectionList with OptimizedSectionList, like this:
+
+	....
+	import { OptimizedSectionList } from "react-native-optimized-flatlist";
+	...
+	
+	render(){
+		...
+		return (
+		   <OptimizedSectionList
+	        sections={sections}
+	        ListEmptyComponent={this.renderEmptyListComponent()}
+	        style={styles.listContainer}
+	        renderItem={this.renderItem}
+	        renderSectionHeader={this.renderSectionHeader}
+	        stickySectionHeadersEnabled={false}
+	        keyExtractor={this.keyExtractor}
+	        refreshing={carregandoIngressos}
+	        onRefresh={this.props.getIngressos}
+	        ListHeaderComponent={this.renderListHeader}
+	        viewabilityConfig={this.viewabilityConfig}
+	      />
+		)
+	 }
+ 
+**Warning: The section object MUST have an unique key.**
+
+      sections = {
+        title: "Eventos Anteriores",
+        data: ingressosExpirados,
+        key: "passados"
+      };
