@@ -49,19 +49,23 @@ export default class OptimizedFlatList extends React.PureComponent {
   }
 
   _onViewableItemsChanged (info: {
-      changed: Array<{
-        key: string,
-        isViewable: boolean,
-        item: any,
-        index: ?number,
-        section?: any,
-      }>
-    }
-  ) {
+    changed: Array<{
+      key: string,
+      isViewable: boolean,
+      item: any,
+      index: ?number,
+      section?: any,
+    }>,
+     viewableItems: any
+  }
+) {
     info.changed.map(item =>
       this._updateItem(item.index, item.index === 0 || item.isViewable)
     )
-  }
+    if(this.props.onViewableItemsChanged) {
+      this.props.onViewableItemsChanged(info);
+    }
+}
 
   scrollToEnd(params?: ?{animated?: ?boolean}) {
       if (this._listRef) {
